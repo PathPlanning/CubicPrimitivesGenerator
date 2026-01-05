@@ -7,6 +7,7 @@ import matplotlib.axes as axes
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 from IPython.display import display, clear_output
+from PIL import Image
 from typing import Optional
 from PRIM_structs import *
 
@@ -29,14 +30,19 @@ def plot_arrow(x: float, y: float, theta: float, length: float = 0.8, width: flo
     
 
 
-def create_live_visualizer(start_state: State, target_state: State, xlim=(-3, 9), ylim=(-4, 4), figsize=(6, 4), dpi=150):
+def create_live_visualizer(start_state: State, target_state: State,
+                           xlim=(-3, 9), ylim=(-4, 4), figsize=(6, 4), dpi=150,
+                           frequency=10, make_gif=False):
     """
     Создает "контекст" для рисования и возвращает функцию для онлайн-перерисовывания траектории.
     
     Параметры:
         start_state, target_state: объекты State (для отрисовки старта и цели),
         xlim, ylim: фиксированные границы графика по каждой из осей,
-        figsize, dpi: настройки качества картинки (её размер и плотность пикселей на дюйм).
+        figsize, dpi: настройки качества картинки (её размер и плотность пикселей на дюйм),
+        frequency: как часто отрисовывать траекторию (по умолчанию -- раз в 10 итераций метода Ньютона),
+        make_gif: если True, то помимо функции онлайн-перерисовывания возвращается функция save_gif, которую
+                  можно вызвать после окончания визуализации, чтобы сохранить её в виде gif.
     """
     
     fig, ax = plt.subplots(figsize=figsize, dpi=dpi)  # однократно создаем фигуру и оси
@@ -61,9 +67,12 @@ def create_live_visualizer(start_state: State, target_state: State, xlim=(-3, 9)
     # В Jupyter Notebook это заставляет отрисовать пустой график сразу
     # display(fig) # Можно раскомментировать, если график не появляется сам
     
+    frames = []  # Список кадров (будет наполняться только если make_gif=True)
+
+
     # Определяем функцию обновления (принимает на вход текущую траекторию для отрисовки и номер текущей итерации для отрисовки):
     def update(trajectory, iter):
-        if iter % 10 != 0:  # отрисовываем раз в 10 итераций
+        if iter % frequency != 0:  # отрисовываем раз в frequency итераций
             return
         
         xs = trajectory.sample_x()  # получаем новые координаты точек траектории
@@ -72,7 +81,7 @@ def create_live_visualizer(start_state: State, target_state: State, xlim=(-3, 9)
         line.set_data(xs, ys)       # ОБНОВЛЯЕМ данные в существующих объектах (очень быстро)
         if len(xs) > 0:             # обновляем точку конца траектории (опционально)
             head_marker.set_data([xs[-1]], [ys[-1]])
-        
+
         # Перерисовываем холст (вроде нужно):
         plt.pause(0.001) 
         
@@ -83,9 +92,45 @@ def create_live_visualizer(start_state: State, target_state: State, xlim=(-3, 9)
         # Если вдруг анимация не идет, в старых версиях Jupyter иногда нужны следующие 2 строки:
         clear_output(wait=True)
         display(fig)
-        
-    # Возвращаем готовую функцию
-    return update
+
+        # --- Сохраняем отрисованную картинку в список фреймов ---
+        if make_gif:
+            rgba_buffer = fig.canvas.buffer_rgba()  # Конвертируем буфер графика в массив numpy, затем в картинку PIL
+            image_array = np.asarray(rgba_buffer)
+            im = Image.fromarray(image_array)
+            if im.mode == 'RGBA':  # Конвертируем в RGB (убираем прозрачность, чтобы меньше весило)
+                im = im.convert('RGB')
+            frames.append(im)
+        # --------------------------------------------------------
+    
+
+    # --- Функция сохранения кадров frames в итоговую gif (необходимо вызвать после окончания визуализации) ---
+    # (drop_last говорит, сколько последних кадров отбросить... может быть полезно, так как в конце оптимизации обычно мало что меняется)
+    def save_gif(filename="optimization.gif", fps=10, drop_last = 0):
+        if len(frames) == 0:
+            print("No frames captured to save.")
+            return
+        durations = int(1000 / fps)
+        end_index = len(frames) - drop_last  # Вычисляем срез кадров
+        if end_index <= 1:
+            end_index = len(frames)  # Защита, если drop_last слишком большой
+        print(f"Saving GIF... Total frames: {len(frames)}, Used: {end_index}")
+
+        frames[0].save(
+            filename, 
+            save_all=True, 
+            append_images=frames[1:end_index],  # Берем срез, отбрасывая хвост
+            optimize=True, 
+            duration=durations,  # <-- задержка между кадрами (число или список) в мс
+            loop=0
+        )
+        print(f"GIF saved to {filename}")
+
+
+    if make_gif:
+        return update, save_gif
+    else:
+        return update
 
 
 
