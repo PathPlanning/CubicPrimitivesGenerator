@@ -1,6 +1,6 @@
 # Efficient Motion Primitives Generation
 
-[![Ru](https://img.shields.io/badge/🇷🇺_Русский-blue)](README_RU.md)
+[![Ru](https://img.shields.io/badge/🇷🇺_In-russian-blue)](README_RU.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)
 
@@ -112,13 +112,16 @@ If you found this project useful, we invite you to check out our work on **State
 > *This paper proposes the MeshA\* algorithm for path planning using motion primitives. Unlike the classical approach (State Lattice), where the search is conducted over a state graph, MeshA\* performs a search directly over grid cells, fitting kinematically feasible primitive sequences on the fly. This allows reducing planning time by 1.5–2 times compared to baseline methods while maintaining completeness and optimality guarantees.*
 
 ```bibtex
-@misc{agranovskiy2025meshaefficientpathplanning,
-      title={MeshA*: Efficient Path Planning With Motion Primitives}, 
-      author={Marat Agranovskiy and Konstantin Yakovlev},
-      year={2025},
-      eprint={2412.10320},
-      archivePrefix={arXiv},
-      primaryClass={cs.RO},
-      url={[https://arxiv.org/abs/2412.10320](https://arxiv.org/abs/2412.10320)}, 
+@article{Agranovskiy_Yakovlev_2026,
+  title={MeshA*: Efficient Path Planning with Motion Primitives},
+  author={Agranovskiy, Marat and Yakovlev, Konstantin},
+  url={https://ojs.aaai.org/index.php/AAAI/article/view/41004},
+  DOI={10.1609/aaai.v40i43.41004},
+  journal={Proceedings of the AAAI Conference on Artificial Intelligence},
+  month={Mar.},
+  year={2026},
+  number={43},
+  volume={40},
+  pages={36785-36792}
 }
 ```
