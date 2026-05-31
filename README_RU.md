@@ -115,13 +115,16 @@ python experiments/run_grid_experiment.py --output experiments/grid_results_corr
 > *В этой работе предложен алгоритм MeshA\* для планирования траектории с использованием примитивов движения. В отличие от классического подхода (State Lattice), где поиск ведется по графу состояний, MeshA\* выполняет поиск непосредственно по ячейкам сетки, на лету подбирая кинематически допустимые последовательности примитивов. Это позволяет сократить время планирования в 1.5–2 раза по сравнению с базовыми методами, сохраняя при этом гарантии полноты и оптимальности решения.*
 
 ```bibtex
-@misc{agranovskiy2025meshaefficientpathplanning,
-      title={MeshA*: Efficient Path Planning With Motion Primitives}, 
-      author={Marat Agranovskiy and Konstantin Yakovlev},
-      year={2025},
-      eprint={2412.10320},
-      archivePrefix={arXiv},
-      primaryClass={cs.RO},
-      url={https://arxiv.org/abs/2412.10320}, 
+@article{Agranovskiy_Yakovlev_2026,
+  title={MeshA*: Efficient Path Planning with Motion Primitives},
+  author={Agranovskiy, Marat and Yakovlev, Konstantin},
+  url={https://ojs.aaai.org/index.php/AAAI/article/view/41004},
+  DOI={10.1609/aaai.v40i43.41004},
+  journal={Proceedings of the AAAI Conference on Artificial Intelligence},
+  month={Mar.},
+  year={2026},
+  number={43},
+  volume={40},
+  pages={36785-36792}
 }
 ```
