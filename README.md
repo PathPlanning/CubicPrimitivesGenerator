@@ -1,6 +1,6 @@
 # Efficient Motion Primitives Generation
 
-[![Ru](https://img.shields.io/badge/🇷🇺_In-russian-blue)](README_RU.md)
+[![Ru](https://img.shields.io/badge/🇷🇺-In_russian-blue)](README_RU.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)
 
@@ -101,7 +101,7 @@ To process the resulting `.csv` files and build plots (as seen in the paper), us
 If you use this code in your research, please cite our paper:
 
 ```bibtex
-<under review>
+@article{Аграновский_Яковлев_2026, title={Эффективный метод генерации кинематически-согласованных примитивов движения на основе параметризации по кривизне}, volume={25}, url={https://ia.spcras.ru/index.php/sp/article/view/17396}, DOI={10.15622/ia.25.4.4}, number={4}, journal={Информатика и автоматизация}, author={Аграновский, Марат Антонович and Яковлев, Константин Сергеевич}, year={2026}, month={июл.}, pages={1090-1113}
 ```
 
 ## 🔗 Related Works
