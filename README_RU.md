@@ -103,7 +103,17 @@ python experiments/run_grid_experiment.py --output experiments/grid_results_corr
 Если вы используете этот код в своих исследованиях, пожалуйста, сошлитесь на нашу статью:
 
 ```bibtex
-<under review>
+@article{Аграновский_Яковлев_2026,
+  title={Эффективный метод генерации кинематически-согласованных примитивов движения на основе параметризации по кривизне},
+  volume={25}, url={https://ia.spcras.ru/index.php/sp/article/view/17396},
+  DOI={10.15622/ia.25.4.4},
+  number={4},
+  journal={Информатика и автоматизация},
+  author={Аграновский, Марат Антонович and Яковлев, Константин Сергеевич},
+  year={2026},
+  month={июл.},
+  pages={1090-1113}
+}
 ```
 
 
