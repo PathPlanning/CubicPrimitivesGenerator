@@ -103,7 +103,8 @@ If you use this code in your research, please cite our paper:
 ```bibtex
 @article{Аграновский_Яковлев_2026,
   title={Эффективный метод генерации кинематически-согласованных примитивов движения на основе параметризации по кривизне},
-  volume={25}, url={https://ia.spcras.ru/index.php/sp/article/view/17396},
+  volume={25},
+  url={https://ia.spcras.ru/index.php/sp/article/view/17396},
   DOI={10.15622/ia.25.4.4},
   number={4},
   journal={Информатика и автоматизация},
