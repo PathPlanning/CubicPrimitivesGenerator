@@ -101,16 +101,16 @@ To process the resulting `.csv` files and build plots (as seen in the paper), us
 If you use this code in your research, please cite our paper:
 
 ```bibtex
-@article{Аграновский_Яковлев_2026,
-  title={Эффективный метод генерации кинематически-согласованных примитивов движения на основе параметризации по кривизне},
+@article{Agranovsky_Yakovlev_2026,
+  title={An Efficient Method for Generating Kinematically Feasible Motion Primitives via Curvature Parameterization},
   volume={25},
   url={https://ia.spcras.ru/index.php/sp/article/view/17396},
   DOI={10.15622/ia.25.4.4},
   number={4},
-  journal={Информатика и автоматизация},
-  author={Аграновский, Марат Антонович and Яковлев, Константин Сергеевич},
+  journal={Informatics and Automation},
+  author={Agranovskiy, Marat and Yakovlev, Konstantin},
   year={2026},
-  month={июл.},
+  month={Jul.},
   pages={1090-1113}
 }
 ```
